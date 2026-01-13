@@ -31,7 +31,7 @@ export default function KakaoShareButton({
     if (window.Kakao && !window.Kakao.isInitialized()) {
       // 카카오 개발자 센터에서 JavaScript 키 발급 필요
       // https://developers.kakao.com 에서 앱 생성 후 키 입력
-      window.Kakao.init('YOUR_KAKAO_JAVASCRIPT_KEY');
+      window.Kakao.init('9223f465d8b869156d8ff2806eea983b');
     }
   }, []);
 
