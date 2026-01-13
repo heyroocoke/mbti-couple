@@ -3,6 +3,8 @@ import HomePage from './pages/HomePage';
 import TestPage from './pages/TestPage';
 import ResultPage from './pages/ResultPage';
 import CompatibilityPage from './pages/CompatibilityPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -13,6 +15,8 @@ export default function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/result/:type" element={<ResultPage />} />
         <Route path="/compatibility" element={<CompatibilityPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
       </Routes>
       <Footer />
     </>
