@@ -26,8 +26,10 @@
   box-shadow: var(--shadow-soft);
 }
 
-.backButton:hover {
-  color: var(--primary);
+@media (hover: hover) {
+  .backButton:hover {
+    color: var(--primary);
+  }
 }
 
 .counter {
@@ -110,7 +112,15 @@
   transition: all 0.2s ease;
 }
 
-.optionButton:hover {
+@media (hover: hover) {
+  .optionButton:hover {
+    background: linear-gradient(135deg, var(--pink-light) 0%, #fff 100%);
+    border-color: var(--primary-light);
+    transform: translateX(5px);
+  }
+}
+
+.optionButton:active {
   background: linear-gradient(135deg, var(--pink-light) 0%, #fff 100%);
   border-color: var(--primary-light);
   transform: translateX(5px);
