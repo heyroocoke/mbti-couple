@@ -1,0 +1,28 @@
+.footer {
+  margin-top: auto;
+  padding: 24px 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  margin-bottom: 4px;
+}
+
+.author {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.year {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
