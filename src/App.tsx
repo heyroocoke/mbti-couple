@@ -6,10 +6,12 @@ import CompatibilityPage from './pages/CompatibilityPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import Footer from './components/Footer';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 export default function App() {
   return (
     <>
+      <LanguageSwitcher />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={<TestPage />} />

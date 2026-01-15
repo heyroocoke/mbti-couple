@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { questions } from '../data/questions';
 import { useSEO } from '../hooks/useSEO';
@@ -7,12 +8,13 @@ import styles from './TestPage.module.css';
 
 export default function TestPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
 
   useSEO({
-    title: 'MBTI 검사',
-    description: '20문항으로 나의 MBTI 성격 유형을 알아보세요. 간단한 질문에 답하고 E/I, S/N, T/F, J/P 성향을 확인하세요.'
+    title: t('test.seoTitle'),
+    description: t('test.seoDescription')
   });
 
   const currentQuestion = questions[currentIndex];
@@ -24,7 +26,6 @@ export default function TestPage() {
     if (currentIndex < questions.length - 1) {
       setTimeout(() => setCurrentIndex(prev => prev + 1), 300);
     } else {
-      // 결과 계산
       const result = calculateResult({ ...answers, [currentQuestion.id]: value });
       navigate(`/result/${result}`);
     }
@@ -56,18 +57,18 @@ export default function TestPage() {
   };
 
   const answerOptions = [
-    { value: 2, label: '매우 그렇다', emoji: '😆' },
-    { value: 1, label: '그렇다', emoji: '🙂' },
-    { value: 0, label: '보통이다', emoji: '😐' },
-    { value: -1, label: '아니다', emoji: '🙁' },
-    { value: -2, label: '전혀 아니다', emoji: '😣' },
+    { value: 2, label: t('test.stronglyAgree'), emoji: '😆' },
+    { value: 1, label: t('test.agree'), emoji: '🙂' },
+    { value: 0, label: t('test.neutral'), emoji: '😐' },
+    { value: -1, label: t('test.disagree'), emoji: '🙁' },
+    { value: -2, label: t('test.stronglyDisagree'), emoji: '😣' },
   ];
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <button className={styles.backButton} onClick={handleBack}>
-          ← 이전
+          ← {t('common.back')}
         </button>
         <span className={styles.counter}>
           {currentIndex + 1} / {questions.length}
@@ -95,7 +96,7 @@ export default function TestPage() {
           transition={{ duration: 0.3 }}
         >
           <div className={styles.questionNumber}>Q{currentIndex + 1}</div>
-          <h2 className={styles.questionText}>{currentQuestion.text}</h2>
+          <h2 className={styles.questionText}>{t(`questions.q${currentQuestion.id}`)}</h2>
 
           <div className={styles.options}>
             {answerOptions.map((option) => (

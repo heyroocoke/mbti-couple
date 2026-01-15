@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { mbtiTypes } from '../data/mbtiTypes';
 import { getCompatibility, getAllCompatibilities } from '../data/compatibility';
@@ -15,6 +16,7 @@ const MBTI_TYPES = [
 
 export default function CompatibilityPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
   const [type1, setType1] = useState(searchParams.get('type1') || '');
@@ -22,8 +24,8 @@ export default function CompatibilityPage() {
   const [showResult, setShowResult] = useState(false);
 
   useSEO({
-    title: 'MBTI 궁합',
-    description: 'MBTI 유형별 연인 궁합을 확인하세요. 16가지 성격 유형의 조합별 궁합 점수와 연애 팁을 제공합니다.'
+    title: t('compatibility.seoTitle'),
+    description: t('compatibility.seoDescription')
   });
 
   useEffect(() => {
@@ -49,8 +51,8 @@ export default function CompatibilityPage() {
   };
 
   const getScoreText = (score: number) => {
-    const texts = ['도전적인 관계', '노력이 필요해요', '괜찮은 궁합', '좋은 궁합', '천생연분'];
-    return texts[score - 1] || '천생연분';
+    const keys = ['score1', 'score2', 'score3', 'score4', 'score5'];
+    return t(`compatibility.${keys[score - 1]}`) || t('compatibility.score5');
   };
 
   const getScoreColor = (score: number) => {
@@ -66,9 +68,9 @@ export default function CompatibilityPage() {
         animate={{ opacity: 1, y: 0 }}
       >
         <button className={styles.backButton} onClick={() => navigate('/')}>
-          ← 홈으로
+          ← {t('common.home')}
         </button>
-        <h1 className={styles.title}>💑 MBTI 궁합 보기</h1>
+        <h1 className={styles.title}>💑 {t('compatibility.title')}</h1>
       </motion.div>
 
       <motion.div
@@ -79,7 +81,7 @@ export default function CompatibilityPage() {
       >
         <div className={styles.selectorRow}>
           <div className={styles.selectorGroup}>
-            <label className={styles.label}>나의 MBTI</label>
+            <label className={styles.label}>{t('compatibility.myMbti')}</label>
             <div className={styles.selectWrapper}>
               <select
                 className={styles.select}
@@ -89,10 +91,10 @@ export default function CompatibilityPage() {
                   setShowResult(false);
                 }}
               >
-                <option value="">선택하세요</option>
+                <option value="">{t('compatibility.selectPlaceholder')}</option>
                 {MBTI_TYPES.map(type => (
                   <option key={type} value={type}>
-                    {mbtiTypes[type].emoji} {type} - {mbtiTypes[type].title}
+                    {mbtiTypes[type].emoji} {type} - {t(`mbtiTypes.${type}.title`)}
                   </option>
                 ))}
               </select>
@@ -102,7 +104,7 @@ export default function CompatibilityPage() {
           <div className={styles.heart}>💕</div>
 
           <div className={styles.selectorGroup}>
-            <label className={styles.label}>상대방 MBTI</label>
+            <label className={styles.label}>{t('compatibility.partnerMbti')}</label>
             <div className={styles.selectWrapper}>
               <select
                 className={styles.select}
@@ -112,10 +114,10 @@ export default function CompatibilityPage() {
                   setShowResult(false);
                 }}
               >
-                <option value="">선택하세요</option>
+                <option value="">{t('compatibility.selectPlaceholder')}</option>
                 {MBTI_TYPES.map(type => (
                   <option key={type} value={type}>
-                    {mbtiTypes[type].emoji} {type} - {mbtiTypes[type].title}
+                    {mbtiTypes[type].emoji} {type} - {t(`mbtiTypes.${type}.title`)}
                   </option>
                 ))}
               </select>
@@ -130,7 +132,7 @@ export default function CompatibilityPage() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          궁합 확인하기 ✨
+          {t('compatibility.checkButton')}
         </motion.button>
       </motion.div>
 
@@ -148,7 +150,7 @@ export default function CompatibilityPage() {
                 <div className={styles.personCard}>
                   <span className={styles.personEmoji}>{type1Info.emoji}</span>
                   <span className={styles.personType} style={{ color: type1Info.color }}>{type1}</span>
-                  <span className={styles.personTitle}>{type1Info.title}</span>
+                  <span className={styles.personTitle}>{t(`mbtiTypes.${type1}.title`)}</span>
                 </div>
 
                 <div className={styles.scoreDisplay}>
@@ -167,17 +169,17 @@ export default function CompatibilityPage() {
                 <div className={styles.personCard}>
                   <span className={styles.personEmoji}>{type2Info.emoji}</span>
                   <span className={styles.personType} style={{ color: type2Info.color }}>{type2}</span>
-                  <span className={styles.personTitle}>{type2Info.title}</span>
+                  <span className={styles.personTitle}>{t(`mbtiTypes.${type2}.title`)}</span>
                 </div>
               </div>
 
-              <div className={styles.compatibilityTitle}>{compatibility.title}</div>
-              <p className={styles.compatibilityDesc}>{compatibility.description}</p>
+              <div className={styles.compatibilityTitle}>{t(`compatibilityData.${type1}_${type2}.title`)}</div>
+              <p className={styles.compatibilityDesc}>{t(`compatibilityData.${type1}_${type2}.description`)}</p>
 
               <div className={styles.tipsSection}>
-                <h3 className={styles.tipsTitle}>💡 연애 팁</h3>
+                <h3 className={styles.tipsTitle}>💡 {t('compatibility.loveTips')}</h3>
                 <ul className={styles.tipsList}>
-                  {compatibility.tips.map((tip, index) => (
+                  {(t(`compatibilityData.${type1}_${type2}.tips`, { returnObjects: true }) as string[]).map((tip, index) => (
                     <li key={index} className={styles.tipItem}>{tip}</li>
                   ))}
                 </ul>
@@ -195,7 +197,7 @@ export default function CompatibilityPage() {
           transition={{ delay: 0.2 }}
         >
           <h3 className={styles.allMatchesTitle}>
-            <span>{type1Info?.emoji}</span> {type1}의 모든 궁합
+            <span>{type1Info?.emoji}</span> {t('compatibility.allMatchesTitle', { type: type1 })}
           </h3>
 
           <div className={styles.matchesGrid}>
@@ -226,7 +228,7 @@ export default function CompatibilityPage() {
 
       <div className={styles.footer}>
         <button className={styles.testButton} onClick={() => navigate('/test')}>
-          MBTI 모른다면? 테스트하기 →
+          {t('compatibility.testButton')}
         </button>
       </div>
     </div>

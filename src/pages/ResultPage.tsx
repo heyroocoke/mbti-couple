@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { mbtiTypes } from '../data/mbtiTypes';
 import { getBestMatches } from '../data/compatibility';
@@ -9,13 +10,14 @@ import styles from './ResultPage.module.css';
 export default function ResultPage() {
   const { type } = useParams<{ type: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const mbtiType = mbtiTypes[type || ''] || mbtiTypes.INFP;
   const bestMatches = getBestMatches(type || 'INFP');
 
   useSEO({
-    title: `${mbtiType.type} ${mbtiType.title}`,
-    description: `${mbtiType.type} 성격 유형 분석과 연애 스타일, 베스트 궁합을 확인하세요. ${mbtiType.description}`
+    title: `${mbtiType.type} ${t(`mbtiTypes.${mbtiType.type}.title`)}`,
+    description: t('result.seoDescription', { type: mbtiType.type, description: t(`mbtiTypes.${mbtiType.type}.description`) })
   });
 
   const getScoreStars = (score: number) => {
@@ -30,7 +32,7 @@ export default function ResultPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className={styles.title}>당신의 MBTI는</h1>
+        <h1 className={styles.title}>{t('result.yourMbtiIs')}</h1>
       </motion.div>
 
       <motion.div
@@ -46,8 +48,8 @@ export default function ResultPage() {
         >
           {mbtiType.type}
         </div>
-        <div className={styles.typeTitle}>{mbtiType.title}</div>
-        <p className={styles.typeDescription}>{mbtiType.description}</p>
+        <div className={styles.typeTitle}>{t(`mbtiTypes.${mbtiType.type}.title`)}</div>
+        <p className={styles.typeDescription}>{t(`mbtiTypes.${mbtiType.type}.description`)}</p>
       </motion.div>
 
       <motion.div
@@ -58,10 +60,10 @@ export default function ResultPage() {
       >
         <div className={styles.section}>
           <h3 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>✨</span> 강점
+            <span className={styles.sectionIcon}>✨</span> {t('result.strengths')}
           </h3>
           <div className={styles.tagList}>
-            {mbtiType.strengths.map((strength, index) => (
+            {(t(`mbtiTypes.${mbtiType.type}.strengths`, { returnObjects: true }) as string[]).map((strength, index) => (
               <span key={index} className={styles.tag} style={{ backgroundColor: `${mbtiType.color}20`, color: mbtiType.color }}>
                 {strength}
               </span>
@@ -71,10 +73,10 @@ export default function ResultPage() {
 
         <div className={styles.section}>
           <h3 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>💭</span> 약점
+            <span className={styles.sectionIcon}>💭</span> {t('result.weaknesses')}
           </h3>
           <div className={styles.tagList}>
-            {mbtiType.weaknesses.map((weakness, index) => (
+            {(t(`mbtiTypes.${mbtiType.type}.weaknesses`, { returnObjects: true }) as string[]).map((weakness, index) => (
               <span key={index} className={styles.tagWeak}>
                 {weakness}
               </span>
@@ -84,9 +86,9 @@ export default function ResultPage() {
 
         <div className={styles.section}>
           <h3 className={styles.sectionTitle}>
-            <span className={styles.sectionIcon}>💕</span> 연애 스타일
+            <span className={styles.sectionIcon}>💕</span> {t('result.loveStyle')}
           </h3>
-          <p className={styles.loveStyle}>{mbtiType.loveStyle}</p>
+          <p className={styles.loveStyle}>{t(`mbtiTypes.${mbtiType.type}.loveStyle`)}</p>
         </div>
       </motion.div>
 
@@ -97,7 +99,7 @@ export default function ResultPage() {
         transition={{ duration: 0.5, delay: 0.6 }}
       >
         <h3 className={styles.matchTitle}>
-          <span className={styles.sectionIcon}>💑</span> 베스트 궁합 TOP 3
+          <span className={styles.sectionIcon}>💑</span> {t('result.bestMatchesTitle')}
         </h3>
 
         <div className={styles.matchList}>
@@ -117,12 +119,12 @@ export default function ResultPage() {
                   <div className={styles.matchType}>
                     <span className={styles.matchEmoji}>{matchType.emoji}</span>
                     <span style={{ color: matchType.color, fontWeight: 700 }}>{match.type}</span>
-                    <span className={styles.matchTypeTitle}>{matchType.title}</span>
+                    <span className={styles.matchTypeTitle}>{t(`mbtiTypes.${match.type}.title`)}</span>
                   </div>
                   <div className={styles.matchScore}>
                     {getScoreStars(match.compatibility.score)}
                   </div>
-                  <div className={styles.matchDesc}>{match.compatibility.title}</div>
+                  <div className={styles.matchDesc}>{t(`compatibilityData.${type}_${match.type}.title`)}</div>
                 </div>
                 <span className={styles.matchArrow}>→</span>
               </motion.div>
@@ -137,10 +139,10 @@ export default function ResultPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
       >
-        <h3 className={styles.shareTitle}>결과 공유하기</h3>
+        <h3 className={styles.shareTitle}>{t('result.shareResult')}</h3>
         <KakaoShareButton
-          title={`나의 MBTI는 ${mbtiType.type} (${mbtiType.title})!`}
-          description={`${mbtiType.description} 나도 MBTI 궁합 테스트 해보기!`}
+          title={t('result.shareTitle', { type: mbtiType.type, title: t(`mbtiTypes.${mbtiType.type}.title`) })}
+          description={t('result.shareDescription', { description: t(`mbtiTypes.${mbtiType.type}.description`) })}
         />
       </motion.div>
 
@@ -154,19 +156,19 @@ export default function ResultPage() {
           className={styles.primaryButton}
           onClick={() => navigate(`/compatibility?type1=${type}`)}
         >
-          궁합 더 알아보기 💕
+          {t('result.moreCompatibility')}
         </button>
         <button
           className={styles.secondaryButton}
           onClick={() => navigate('/test')}
         >
-          다시 테스트하기
+          {t('result.retakeTest')}
         </button>
         <button
           className={styles.homeButton}
           onClick={() => navigate('/')}
         >
-          홈으로
+          {t('common.home')}
         </button>
       </motion.div>
     </div>
