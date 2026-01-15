@@ -124,7 +124,7 @@ export default function ResultPage() {
                   <div className={styles.matchScore}>
                     {getScoreStars(match.compatibility.score)}
                   </div>
-                  <div className={styles.matchDesc}>{t(`compatibilityData.${type}_${match.type}.title`)}</div>
+                  <div className={styles.matchDesc}>{t(`compatibilityData.${type}.${match.type}.title`)}</div>
                 </div>
                 <span className={styles.matchArrow}>→</span>
               </motion.div>

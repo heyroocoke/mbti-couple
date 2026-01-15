@@ -173,13 +173,13 @@ export default function CompatibilityPage() {
                 </div>
               </div>
 
-              <div className={styles.compatibilityTitle}>{t(`compatibilityData.${type1}_${type2}.title`)}</div>
-              <p className={styles.compatibilityDesc}>{t(`compatibilityData.${type1}_${type2}.description`)}</p>
+              <div className={styles.compatibilityTitle}>{t(`compatibilityData.${type1}.${type2}.title`)}</div>
+              <p className={styles.compatibilityDesc}>{t(`compatibilityData.${type1}.${type2}.description`)}</p>
 
               <div className={styles.tipsSection}>
                 <h3 className={styles.tipsTitle}>💡 {t('compatibility.loveTips')}</h3>
                 <ul className={styles.tipsList}>
-                  {(t(`compatibilityData.${type1}_${type2}.tips`, { returnObjects: true }) as string[]).map((tip, index) => (
+                  {(t(`compatibilityData.${type1}.${type2}.tips`, { returnObjects: true }) as string[]).map((tip, index) => (
                     <li key={index} className={styles.tipItem}>{tip}</li>
                   ))}
                 </ul>
