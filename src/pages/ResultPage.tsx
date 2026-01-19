@@ -5,6 +5,7 @@ import { mbtiTypes } from '../data/mbtiTypes';
 import { getBestMatches } from '../data/compatibility';
 import { useSEO } from '../hooks/useSEO';
 import KakaoShareButton from '../components/KakaoShareButton';
+import KakaoAdFit from '../components/KakaoAdFit';
 import styles from './ResultPage.module.css';
 
 export default function ResultPage() {
@@ -50,6 +51,19 @@ export default function ResultPage() {
         </div>
         <div className={styles.typeTitle}>{t(`mbtiTypes.${mbtiType.type}.title`)}</div>
         <p className={styles.typeDescription}>{t(`mbtiTypes.${mbtiType.type}.description`)}</p>
+      </motion.div>
+
+      <motion.div
+        className={styles.adContainer}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <KakaoAdFit
+          unit="DAN-uGyMPkTifRpLftHs"
+          width={320}
+          height={480}
+        />
       </motion.div>
 
       <motion.div

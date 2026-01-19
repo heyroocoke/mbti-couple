@@ -57,6 +57,14 @@
   word-break: keep-all;
 }
 
+.adContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 .detailsCard {
   background: var(--bg-card);
   border-radius: var(--radius-md);
