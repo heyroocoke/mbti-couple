@@ -14,9 +14,8 @@ export default function Footer() {
           <Link to="/terms" className={styles.link}>{t('common.terms')}</Link>
         </div>
         <p className={styles.copyright}>
-          Made with 💕 by <span className={styles.author}>Jang Eun Su</span>
+          © 2026 Chaneug. All rights reserved.
         </p>
-        <p className={styles.year}>© 2026 {t('common.appName')}</p>
       </div>
     </footer>
   );
