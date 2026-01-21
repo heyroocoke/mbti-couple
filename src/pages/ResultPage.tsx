@@ -60,9 +60,9 @@ export default function ResultPage() {
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <KakaoAdFit
-          unit="DAN-uGyMPkTifRpLftHs"
-          width={320}
-          height={480}
+          unit="DAN-nODXgpL0c3WdqyDS"
+          width={300}
+          height={250}
         />
       </motion.div>
 
