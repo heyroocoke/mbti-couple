@@ -9,22 +9,16 @@ interface KakaoAdFitProps {
 
 declare global {
   interface Window {
-    // 새 버전: adfit이 함수로 동작
-    adfit?: (() => void) & {
-      display?: (unit: string) => void;
-      destroy?: (unit: string) => void;
-    };
+    adfit?: unknown;
   }
 }
 
 export default function KakaoAdFit({ unit, width, height, className }: KakaoAdFitProps) {
-  const insRef = useRef<HTMLInsElement>(null);
   const initialized = useRef(false);
 
   useEffect(() => {
     if (!unit) return;
 
-    // 이미 초기화되었으면 스킵 (StrictMode 대응)
     if (initialized.current) return;
 
     let intervalId: ReturnType<typeof setInterval> | null = null;
@@ -32,14 +26,16 @@ export default function KakaoAdFit({ unit, width, height, className }: KakaoAdFi
 
     const displayAd = () => {
       try {
-        if (window.adfit) {
-          if (typeof window.adfit === 'function') {
-            window.adfit();
+        const adfit = window.adfit as unknown;
+        if (adfit) {
+          if (typeof adfit === 'function') {
+            adfit();
             initialized.current = true;
             return true;
           }
-          if (typeof window.adfit.display === 'function') {
-            window.adfit.display(unit);
+          const adfitObj = adfit as { display?: (unit: string) => void };
+          if (typeof adfitObj.display === 'function') {
+            adfitObj.display(unit);
             initialized.current = true;
             return true;
           }
@@ -94,7 +90,6 @@ export default function KakaoAdFit({ unit, width, height, className }: KakaoAdFi
       }}
     >
       <ins
-        ref={insRef}
         className="kakao_ad_area"
         style={{ display: 'none' }}
         data-ad-unit={unit}
