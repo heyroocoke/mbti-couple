@@ -113,6 +113,10 @@
   color: var(--primary);
 }
 
+.adContainer {
+  margin-top: 32px;
+}
+
 /* 배경 장식 */
 .decoration {
   position: fixed;

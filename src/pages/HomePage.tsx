@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useSEO } from "../hooks/useSEO";
+import KakaoAdFit from "../components/KakaoAdFit";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -78,6 +79,19 @@ export default function HomePage() {
         >
           {t('home.compatibilityButton')}
         </motion.button>
+
+        <motion.div
+          className={styles.adContainer}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <KakaoAdFit
+            unit="DAN-nODXgpL0c3WdqyDS"
+            width={300}
+            height={250}
+          />
+        </motion.div>
       </motion.div>
 
       <div className={styles.decoration}>
