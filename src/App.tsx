@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import TestPage from './pages/TestPage';
 import ResultPage from './pages/ResultPage';
@@ -9,9 +9,12 @@ import Footer from './components/Footer';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
 export default function App() {
+  const location = useLocation();
+  const hideLanguageSwitcher = location.pathname === '/test';
+
   return (
     <>
-      <LanguageSwitcher />
+      {!hideLanguageSwitcher && <LanguageSwitcher />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={<TestPage />} />
