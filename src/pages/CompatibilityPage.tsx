@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,20 +19,17 @@ export default function CompatibilityPage() {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
 
-  const [type1, setType1] = useState(searchParams.get('type1') || '');
-  const [type2, setType2] = useState(searchParams.get('type2') || '');
-  const [showResult, setShowResult] = useState(false);
+  const initialType1 = searchParams.get('type1') || '';
+  const initialType2 = searchParams.get('type2') || '';
+
+  const [type1, setType1] = useState(initialType1);
+  const [type2, setType2] = useState(initialType2);
+  const [showResult, setShowResult] = useState(Boolean(initialType1 && initialType2));
 
   useSEO({
     title: t('compatibility.seoTitle'),
     description: t('compatibility.seoDescription')
   });
-
-  useEffect(() => {
-    if (type1 && type2) {
-      setShowResult(true);
-    }
-  }, []);
 
   const handleCheck = () => {
     if (type1 && type2) {

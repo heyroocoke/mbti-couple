@@ -40,7 +40,7 @@ export default function KakaoAdFit({ unit, width, height, className }: KakaoAdFi
             return true;
           }
         }
-      } catch (e) {
+      } catch {
         // silently fail
       }
       return false;
