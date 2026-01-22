@@ -1,8 +1,8 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { mbtiTypes } from '../data/mbtiTypes';
-import { getBestMatches } from '../data/compatibility';
+import { getBestMatches, getCompatibility } from '../data/compatibility';
 import { useSEO } from '../hooks/useSEO';
 import KakaoShareButton from '../components/KakaoShareButton';
 import KakaoAdFit from '../components/KakaoAdFit';
@@ -12,9 +12,13 @@ export default function ResultPage() {
   const { type } = useParams<{ type: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const sharedBy = searchParams.get('sharedBy');
 
   const mbtiType = mbtiTypes[type || ''] || mbtiTypes.INFP;
   const bestMatches = getBestMatches(type || 'INFP');
+  const sharedByType = sharedBy ? mbtiTypes[sharedBy] : null;
+  const sharedByCompatibility = sharedBy && type ? getCompatibility(type, sharedBy) : null;
 
   useSEO({
     title: `${mbtiType.type} ${t(`mbtiTypes.${mbtiType.type}.title`)}`,
@@ -147,6 +151,48 @@ export default function ResultPage() {
         </div>
       </motion.div>
 
+      {sharedBy && sharedByType && sharedByCompatibility && (
+        <motion.div
+          className={styles.partnerCompatibilityCard}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <h3 className={styles.partnerCompatibilityTitle}>
+            <span className={styles.sectionIcon}>💑</span> {t('result.partnerCompatibilityTitle')}
+          </h3>
+          <div className={styles.coupleDisplay}>
+            <div className={styles.personCard}>
+              <span className={styles.personEmoji}>{sharedByType.emoji}</span>
+              <span className={styles.personType} style={{ color: sharedByType.color }}>{sharedBy}</span>
+              <span className={styles.personTitle}>{t(`mbtiTypes.${sharedBy}.title`)}</span>
+            </div>
+
+            <div className={styles.scoreDisplay}>
+              <div className={styles.scoreStars}>
+                {'💖'.repeat(sharedByCompatibility.score)}{'🤍'.repeat(5 - sharedByCompatibility.score)}
+              </div>
+            </div>
+
+            <div className={styles.personCard}>
+              <span className={styles.personEmoji}>{mbtiType.emoji}</span>
+              <span className={styles.personType} style={{ color: mbtiType.color }}>{type}</span>
+              <span className={styles.personTitle}>{t(`mbtiTypes.${type}.title`)}</span>
+            </div>
+          </div>
+          <div className={styles.compatibilityTitle}>{t(`compatibilityData.${type}.${sharedBy}.title`)}</div>
+          <p className={styles.compatibilityDesc}>{t(`compatibilityData.${type}.${sharedBy}.description`)}</p>
+          <div className={styles.tipsSection}>
+            <h3 className={styles.tipsTitle}>💡 {t('compatibility.loveTips')}</h3>
+            <ul className={styles.tipsList}>
+              {(t(`compatibilityData.${type}.${sharedBy}.tips`, { returnObjects: true }) as string[]).map((tip, index) => (
+                <li key={index} className={styles.tipItem}>{tip}</li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      )}
+
       <motion.div
         className={styles.shareSection}
         initial={{ opacity: 0, y: 20 }}
@@ -157,6 +203,13 @@ export default function ResultPage() {
         <KakaoShareButton
           title={t('result.shareTitle', { type: mbtiType.type, title: t(`mbtiTypes.${mbtiType.type}.title`) })}
           description={t('result.shareDescription', { description: t(`mbtiTypes.${mbtiType.type}.description`) })}
+        />
+
+        <h3 className={styles.shareTitle} style={{ marginTop: '2rem' }}>{t('result.askPartner')}</h3>
+        <KakaoShareButton
+          title={t('result.askPartnerTitle', { type: mbtiType.type })}
+          description={t('result.askPartnerDescription', { type: mbtiType.type })}
+          linkUrl={`${window.location.origin}/test?sharedBy=${type}`}
         />
       </motion.div>
 

@@ -18,12 +18,14 @@ interface KakaoShareButtonProps {
   title: string;
   description: string;
   imageUrl?: string;
+  linkUrl?: string;
 }
 
 export default function KakaoShareButton({
   title,
   description,
-  imageUrl = 'https://mbticouple.com/og-image.png'
+  imageUrl = 'https://mbticouple.com/og-image.png',
+  linkUrl
 }: KakaoShareButtonProps) {
   const { t } = useTranslation();
 
@@ -34,6 +36,7 @@ export default function KakaoShareButton({
   }, []);
 
   const handleShare = () => {
+    const shareUrl = linkUrl || window.location.href;
     if (window.Kakao) {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
@@ -42,16 +45,16 @@ export default function KakaoShareButton({
           description: description,
           imageUrl: imageUrl,
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            mobileWebUrl: shareUrl,
+            webUrl: shareUrl,
           },
         },
         buttons: [
           {
             title: t('common.takeTest'),
             link: {
-              mobileWebUrl: 'https://mbticouple.com',
-              webUrl: 'https://mbticouple.com',
+              mobileWebUrl: shareUrl,
+              webUrl: shareUrl,
             },
           },
         ],
@@ -62,12 +65,13 @@ export default function KakaoShareButton({
   };
 
   const handleCopyLink = async () => {
+    const shareUrl = linkUrl || window.location.href;
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      await navigator.clipboard.writeText(shareUrl);
       alert(t('common.linkCopied'));
     } catch {
       const textArea = document.createElement('textarea');
-      textArea.value = window.location.href;
+      textArea.value = shareUrl;
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');

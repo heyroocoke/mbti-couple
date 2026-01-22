@@ -54,7 +54,11 @@
     "retakeTest": "Retake Test",
     "shareResult": "Share Result",
     "shareTitle": "My MBTI is {{type}} ({{title}})!",
-    "shareDescription": "{{description}} Take the MBTI compatibility test too!"
+    "shareDescription": "{{description}} Take the MBTI compatibility test too!",
+    "askPartner": "Ask Your Partner",
+    "askPartnerTitle": "{{type}} partner took the test!",
+    "askPartnerDescription": "How compatible are we? Take the test now!",
+    "partnerCompatibilityTitle": "Compatibility with Your Partner"
   },
   "compatibility": {
     "seoTitle": "MBTI Compatibility",

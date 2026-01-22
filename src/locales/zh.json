@@ -54,7 +54,11 @@
     "retakeTest": "重新测试",
     "shareResult": "分享结果",
     "shareTitle": "我的MBTI是{{type}}（{{title}}）！",
-    "shareDescription": "{{description}} 来做MBTI配对测试吧！"
+    "shareDescription": "{{description}} 来做MBTI配对测试吧！",
+    "askPartner": "问问我的伴侣",
+    "askPartnerTitle": "{{type}}伴侣做了测试！",
+    "askPartnerDescription": "我们的配对如何？快来测试吧！",
+    "partnerCompatibilityTitle": "与伴侣的配对"
   },
   "compatibility": {
     "seoTitle": "MBTI配对",

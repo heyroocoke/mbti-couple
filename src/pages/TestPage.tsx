@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { questions } from '../data/questions';
@@ -9,6 +9,8 @@ import styles from './TestPage.module.css';
 export default function TestPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const sharedBy = searchParams.get('sharedBy');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
 
@@ -27,7 +29,10 @@ export default function TestPage() {
       setTimeout(() => setCurrentIndex(prev => prev + 1), 300);
     } else {
       const result = calculateResult({ ...answers, [currentQuestion.id]: value });
-      navigate(`/result/${result}`);
+      const resultUrl = sharedBy
+        ? `/result/${result}?sharedBy=${sharedBy}`
+        : `/result/${result}`;
+      navigate(resultUrl);
     }
   };
 
