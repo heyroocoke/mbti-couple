@@ -55,7 +55,7 @@
     "shareResult": "Share Result",
     "shareTitle": "My MBTI is {{type}} ({{title}})!",
     "shareDescription": "{{description}} Take the MBTI compatibility test too!",
-    "askPartner": "Ask Your Partner",
+    "askPartner": "Check Compatibility with Partner",
     "askPartnerTitle": "{{type}} partner took the test!",
     "askPartnerDescription": "How compatible are we? Take the test now!",
     "partnerCompatibilityTitle": "Compatibility with Your Partner"

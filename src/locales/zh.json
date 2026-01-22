@@ -55,7 +55,7 @@
     "shareResult": "分享结果",
     "shareTitle": "我的MBTI是{{type}}（{{title}}）！",
     "shareDescription": "{{description}} 来做MBTI配对测试吧！",
-    "askPartner": "问问我的伴侣",
+    "askPartner": "与伴侣确认配对",
     "askPartnerTitle": "{{type}}伴侣做了测试！",
     "askPartnerDescription": "我们的配对如何？快来测试吧！",
     "partnerCompatibilityTitle": "与伴侣的配对"

@@ -55,7 +55,7 @@
     "shareResult": "結果をシェア",
     "shareTitle": "私のMBTIは{{type}}（{{title}}）！",
     "shareDescription": "{{description}} MBTI相性診断を受けてみよう！",
-    "askPartner": "パートナーに聞いてみる",
+    "askPartner": "パートナーとの相性を確認",
     "askPartnerTitle": "{{type}}のパートナーがテストを受けました！",
     "askPartnerDescription": "私たちの相性は？テストを受けてみよう！",
     "partnerCompatibilityTitle": "パートナーとの相性"
