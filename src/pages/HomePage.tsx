@@ -212,6 +212,107 @@ export default function HomePage() {
         </motion.button>
       </motion.section>
 
+      {/* MBTI 소개 섹션 */}
+      <motion.section
+        className={styles.introSection}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.sectionIcon}>🧠</span>
+          {t('home.whatIsMbtiTitle')}
+        </h2>
+        <div className={styles.introContent}>
+          <p>{t('home.whatIsMbtiDesc1')}</p>
+          <div className={styles.mbtiDimensions}>
+            <div className={styles.dimension}>
+              <span className={styles.dimensionLabel}>E / I</span>
+              <span className={styles.dimensionText}>{t('home.dimensionEI')}</span>
+            </div>
+            <div className={styles.dimension}>
+              <span className={styles.dimensionLabel}>S / N</span>
+              <span className={styles.dimensionText}>{t('home.dimensionSN')}</span>
+            </div>
+            <div className={styles.dimension}>
+              <span className={styles.dimensionLabel}>T / F</span>
+              <span className={styles.dimensionText}>{t('home.dimensionTF')}</span>
+            </div>
+            <div className={styles.dimension}>
+              <span className={styles.dimensionLabel}>J / P</span>
+              <span className={styles.dimensionText}>{t('home.dimensionJP')}</span>
+            </div>
+          </div>
+          <p>{t('home.whatIsMbtiDesc2')}</p>
+        </div>
+      </motion.section>
+
+      {/* 이런 분들께 추천 섹션 */}
+      <motion.section
+        className={styles.recommendSection}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.sectionIcon}>💝</span>
+          {t('home.recommendTitle')}
+        </h2>
+        <div className={styles.recommendList}>
+          <div className={styles.recommendItem}>
+            <span className={styles.recommendEmoji}>💑</span>
+            <p>{t('home.recommend1')}</p>
+          </div>
+          <div className={styles.recommendItem}>
+            <span className={styles.recommendEmoji}>🤔</span>
+            <p>{t('home.recommend2')}</p>
+          </div>
+          <div className={styles.recommendItem}>
+            <span className={styles.recommendEmoji}>💘</span>
+            <p>{t('home.recommend3')}</p>
+          </div>
+          <div className={styles.recommendItem}>
+            <span className={styles.recommendEmoji}>🔮</span>
+            <p>{t('home.recommend4')}</p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* FAQ 섹션 */}
+      <motion.section
+        className={styles.faqSection}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+      >
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.sectionIcon}>❓</span>
+          {t('home.faqTitle')}
+        </h2>
+        <div className={styles.faqList}>
+          <div className={styles.faqItem}>
+            <h3 className={styles.faqQuestion}>{t('home.faq1Question')}</h3>
+            <p className={styles.faqAnswer}>{t('home.faq1Answer')}</p>
+          </div>
+          <div className={styles.faqItem}>
+            <h3 className={styles.faqQuestion}>{t('home.faq2Question')}</h3>
+            <p className={styles.faqAnswer}>{t('home.faq2Answer')}</p>
+          </div>
+          <div className={styles.faqItem}>
+            <h3 className={styles.faqQuestion}>{t('home.faq3Question')}</h3>
+            <p className={styles.faqAnswer}>{t('home.faq3Answer')}</p>
+          </div>
+        </div>
+        <motion.button
+          className={styles.guideButton}
+          onClick={() => navigate("/guide")}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          {t('home.viewGuide')}
+        </motion.button>
+      </motion.section>
+
       <div className={styles.decoration}>
         <div className={styles.circle1}></div>
         <div className={styles.circle2}></div>

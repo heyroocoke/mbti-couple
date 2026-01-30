@@ -1,0 +1,252 @@
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.backButton {
+  background: var(--bg-card);
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 16px;
+}
+
+.backButton:hover {
+  color: var(--primary);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-medium);
+}
+
+/* 섹션 공통 */
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+/* 소개 섹션 */
+.introSection {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.introText {
+  font-size: 1rem;
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.introText:last-child {
+  margin-bottom: 0;
+}
+
+/* 선호 지표 섹션 */
+.dimensionsSection {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.dimensionsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.dimensionCard {
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--purple-light) 100%);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.dimensionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.dimensionLabel {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.dimensionName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.dimensionDesc {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 유형 그룹 섹션 */
+.typeSection {
+  margin-bottom: 32px;
+}
+
+.groupTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.typeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.typeCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.typeCard:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.typeEmoji {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.typeCode {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.typeTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.typeDesc {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.typeStrengths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.strengthTag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* CTA 섹션 */
+.ctaSection {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ctaTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.ctaText {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+}
+
+.ctaButton {
+  background: white;
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 14px 40px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .dimensionsList {
+    grid-template-columns: 1fr;
+  }
+
+  .typeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .typeCard {
+    padding: 20px;
+  }
+
+  .ctaSection {
+    padding: 28px 20px;
+  }
+}

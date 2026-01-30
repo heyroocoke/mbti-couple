@@ -315,6 +315,168 @@
   color: white;
 }
 
+/* 공통 섹션 스타일 */
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sectionIcon {
+  font-size: 1.3rem;
+}
+
+/* MBTI 소개 섹션 */
+.introSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 48px auto 0;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  z-index: 1;
+}
+
+.introContent {
+  text-align: left;
+}
+
+.introContent p {
+  font-size: 1rem;
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.mbtiDimensions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.dimension {
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--purple-light) 100%);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.dimensionLabel {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.dimensionText {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+}
+
+/* 추천 섹션 */
+.recommendSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 32px auto 0;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  z-index: 1;
+}
+
+.recommendList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.recommendItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #fafafa 0%, #fff 100%);
+  border-radius: var(--radius-md);
+  border: 1px solid #f0f0f0;
+}
+
+.recommendEmoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.recommendItem p {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* FAQ 섹션 */
+.faqSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 32px auto 0;
+  padding: 32px 24px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  z-index: 1;
+  margin-bottom: 40px;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.faqItem {
+  text-align: left;
+  padding: 20px;
+  background: linear-gradient(135deg, #fafafa 0%, #fff 100%);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary);
+}
+
+.faqQuestion {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.faqAnswer {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.guideButton {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-soft);
+}
+
+.guideButton:hover {
+  box-shadow: var(--shadow-glow);
+}
+
 /* 배경 장식 */
 .decoration {
   position: fixed;
@@ -410,5 +572,25 @@
   .previewCard {
     width: 100%;
     max-width: 280px;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
+
+  .introSection,
+  .recommendSection,
+  .faqSection {
+    padding: 24px 16px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .mbtiDimensions {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendList {
+    grid-template-columns: 1fr;
   }
 }
