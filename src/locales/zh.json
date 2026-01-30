@@ -11,6 +11,9 @@
     "copyLink": "复制链接",
     "linkCopied": "链接已复制！",
     "shareKakao": "分享到KakaoTalk",
+    "shareTwitter": "分享到X",
+    "shareInstagram": "保存图片",
+    "imageDownloaded": "图片已保存！分享到你的Instagram动态吧 📸",
     "takeTest": "去测试",
     "privacyPolicy": "隐私政策",
     "terms": "使用条款",
@@ -28,7 +31,16 @@
     "feature2": "情侣配对",
     "feature3": "恋爱建议",
     "startButton": "开始测试 💖",
-    "compatibilityButton": "已知MBTI？直接查看配对 →"
+    "compatibilityButton": "已知MBTI？直接查看配对 →",
+    "testCounter": "已有{{formattedCount}}人完成测试",
+    "previewTitle": "你可以获得这样的结果",
+    "previewSubtitle": "查看16种类型的配对",
+    "previewCard1Title": "灵感来源",
+    "previewCard2Title": "天作之合",
+    "previewCard3Title": "完美互补",
+    "previewBlurText": "测试后查看详情 →",
+    "previewCta": "查看我的配对结果",
+    "scrollHint": "了解更多"
   },
   "test": {
     "seoTitle": "MBTI测试",
@@ -58,7 +70,9 @@
     "askPartner": "与伴侣确认配对",
     "askPartnerTitle": "{{type}}伴侣做了测试！",
     "askPartnerDescription": "我们的配对如何？快来测试吧！",
-    "partnerCompatibilityTitle": "与伴侣的配对"
+    "partnerCompatibilityTitle": "与伴侣的配对",
+    "shareCta": "分享给朋友，比较配对结果！",
+    "askPartnerCta": "给伴侣发送测试链接吧！"
   },
   "compatibility": {
     "seoTitle": "MBTI配对",

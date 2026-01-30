@@ -1,11 +1,12 @@
 .container {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
+  justify-content: flex-start;
+  padding: 40px 20px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .hero {
@@ -83,6 +84,34 @@
   color: var(--text-medium);
 }
 
+/* 사회적 증거 카운터 */
+.socialProof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(155, 107, 255, 0.1) 100%);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 107, 157, 0.2);
+}
+
+.fireEmoji {
+  font-size: 1.2rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.counterText {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .startButton {
   background: linear-gradient(135deg, var(--primary) 0%, #FF8EC7 100%);
   color: white;
@@ -113,8 +142,177 @@
   color: var(--primary);
 }
 
+/* 스크롤 힌트 */
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 32px;
+  cursor: pointer;
+}
+
+.scrollArrow {
+  font-size: 1.5rem;
+  color: var(--primary);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.scrollText {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
 .adContainer {
   margin-top: 32px;
+}
+
+/* 결과 미리보기 섹션 */
+.previewSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+  text-align: center;
+  z-index: 1;
+}
+
+.previewTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.previewIcon {
+  font-size: 1.3rem;
+}
+
+.previewSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  margin-bottom: 24px;
+}
+
+.previewCards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.previewCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  width: 220px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.previewCard:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.coupleEmojis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.heartIcon {
+  font-size: 1.2rem;
+}
+
+.coupleTypes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.typeLabel {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.matchSymbol {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.matchScore {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.matchTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  margin-bottom: 12px;
+}
+
+.blurOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.95) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.blurOverlay span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.previewCta {
+  background: transparent;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+}
+
+.previewCta:hover {
+  background: var(--primary);
+  color: white;
 }
 
 /* 배경 장식 */
@@ -186,5 +384,31 @@
   .startButton {
     font-size: 1.1rem;
     padding: 16px 40px;
+  }
+
+  .socialProof {
+    padding: 10px 20px;
+  }
+
+  .counterText {
+    font-size: 0.85rem;
+  }
+
+  .previewSection {
+    margin-top: 30px;
+  }
+
+  .previewTitle {
+    font-size: 1.3rem;
+  }
+
+  .previewCards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .previewCard {
+    width: 100%;
+    max-width: 280px;
   }
 }

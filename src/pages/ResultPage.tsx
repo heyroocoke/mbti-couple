@@ -200,16 +200,20 @@ export default function ResultPage() {
         transition={{ delay: 0.8 }}
       >
         <h3 className={styles.shareTitle}>{t('result.shareResult')}</h3>
+        <p className={styles.shareCta}>{t('result.shareCta')}</p>
         <KakaoShareButton
           title={t('result.shareTitle', { type: mbtiType.type, title: t(`mbtiTypes.${mbtiType.type}.title`) })}
           description={t('result.shareDescription', { description: t(`mbtiTypes.${mbtiType.type}.description`) })}
+          showAllOptions={true}
         />
 
         <h3 className={styles.shareTitle} style={{ marginTop: '2rem' }}>{t('result.askPartner')}</h3>
+        <p className={styles.shareCta}>{t('result.askPartnerCta')}</p>
         <KakaoShareButton
           title={t('result.askPartnerTitle', { type: mbtiType.type })}
           description={t('result.askPartnerDescription', { type: mbtiType.type })}
           linkUrl={`${window.location.origin}/test?sharedBy=${type}`}
+          showAllOptions={true}
         />
       </motion.div>
 

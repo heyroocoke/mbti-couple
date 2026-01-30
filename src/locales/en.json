@@ -11,6 +11,9 @@
     "copyLink": "Copy Link",
     "linkCopied": "Link copied!",
     "shareKakao": "Share on KakaoTalk",
+    "shareTwitter": "Share on X",
+    "shareInstagram": "Save Image",
+    "imageDownloaded": "Image saved! Share it on your Instagram story 📸",
     "takeTest": "Take the Test",
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -28,7 +31,16 @@
     "feature2": "Couple Match",
     "feature3": "Love Tips",
     "startButton": "Start Test 💖",
-    "compatibilityButton": "Know your MBTI? Check compatibility now →"
+    "compatibilityButton": "Know your MBTI? Check compatibility now →",
+    "testCounter": "{{formattedCount}} people have taken the test",
+    "previewTitle": "Results you can get",
+    "previewSubtitle": "Check compatibility of 16 personality types",
+    "previewCard1Title": "Source of Inspiration",
+    "previewCard2Title": "Perfect Match",
+    "previewCard3Title": "Perfect Complement",
+    "previewBlurText": "Take test to see more →",
+    "previewCta": "Check My Compatibility",
+    "scrollHint": "Learn more"
   },
   "test": {
     "seoTitle": "MBTI Test",
@@ -58,7 +70,9 @@
     "askPartner": "Check Compatibility with Partner",
     "askPartnerTitle": "{{type}} partner took the test!",
     "askPartnerDescription": "How compatible are we? Take the test now!",
-    "partnerCompatibilityTitle": "Compatibility with Your Partner"
+    "partnerCompatibilityTitle": "Compatibility with Your Partner",
+    "shareCta": "Share with friends and compare compatibility!",
+    "askPartnerCta": "Send the test link to your partner!"
   },
   "compatibility": {
     "seoTitle": "MBTI Compatibility",

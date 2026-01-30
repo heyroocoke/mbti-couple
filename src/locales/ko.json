@@ -11,6 +11,9 @@
     "copyLink": "링크 복사",
     "linkCopied": "링크가 복사되었습니다!",
     "shareKakao": "카카오톡 공유하기",
+    "shareTwitter": "X(트위터) 공유",
+    "shareInstagram": "이미지 저장",
+    "imageDownloaded": "이미지가 저장되었어요! 인스타그램 스토리에 올려보세요 📸",
     "takeTest": "테스트 하러가기",
     "privacyPolicy": "개인정보처리방침",
     "terms": "이용약관",
@@ -28,7 +31,16 @@
     "feature2": "커플 궁합",
     "feature3": "연애 팁",
     "startButton": "테스트 시작하기 💖",
-    "compatibilityButton": "MBTI 알고 있다면? 궁합 바로 보기 →"
+    "compatibilityButton": "MBTI 알고 있다면? 궁합 바로 보기 →",
+    "testCounter": "지금까지 {{formattedCount}}명이 테스트했어요",
+    "previewTitle": "이런 결과를 받을 수 있어요",
+    "previewSubtitle": "16가지 유형의 궁합을 확인해보세요",
+    "previewCard1Title": "영감의 원천",
+    "previewCard2Title": "천생연분",
+    "previewCard3Title": "완벽한 보완",
+    "previewBlurText": "테스트하고 자세히 보기 →",
+    "previewCta": "내 궁합 결과 확인하기",
+    "scrollHint": "더 알아보기"
   },
   "test": {
     "seoTitle": "MBTI 검사",
@@ -58,7 +70,9 @@
     "askPartner": "내 짝궁이랑 궁합 확인하기",
     "askPartnerTitle": "{{type}} 짝궁이 테스트 해봤어요!",
     "askPartnerDescription": "우리 궁합은 어떨까? 나도 테스트 해보기!",
-    "partnerCompatibilityTitle": "짝궁과의 궁합"
+    "partnerCompatibilityTitle": "짝궁과의 궁합",
+    "shareCta": "친구에게 공유하고 궁합 비교해보세요!",
+    "askPartnerCta": "파트너에게 테스트 링크를 보내보세요!"
   },
   "compatibility": {
     "seoTitle": "MBTI 궁합",
