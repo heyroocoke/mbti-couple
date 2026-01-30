@@ -5,6 +5,7 @@ import ResultPage from './pages/ResultPage';
 import CompatibilityPage from './pages/CompatibilityPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
+import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
 import LanguageSwitcher from './components/LanguageSwitcher';
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/compatibility" element={<CompatibilityPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <Footer />
     </>
