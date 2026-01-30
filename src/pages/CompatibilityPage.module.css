@@ -238,6 +238,37 @@
   font-weight: 700;
 }
 
+/* 공유 섹션 */
+.shareSection {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.shareTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.shareCta {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  margin-bottom: 20px;
+}
+
+.shareSubCta {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
 /* 모든 궁합 그리드 */
 .allMatchesCard {
   background: var(--bg-card);

@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { questions } from '../data/questions';
 import { useSEO } from '../hooks/useSEO';
-import { incrementTestCount } from './HomePage';
 import styles from './TestPage.module.css';
 
 export default function TestPage() {
@@ -30,7 +29,6 @@ export default function TestPage() {
       setTimeout(() => setCurrentIndex(prev => prev + 1), 300);
     } else {
       const result = calculateResult({ ...answers, [currentQuestion.id]: value });
-      incrementTestCount(); // 테스트 완료 카운터 증가
       const resultUrl = sharedBy
         ? `/result/${result}?sharedBy=${sharedBy}`
         : `/result/${result}`;

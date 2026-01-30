@@ -32,7 +32,7 @@
     "feature3": "恋愛アドバイス",
     "startButton": "テスト開始 💖",
     "compatibilityButton": "MBTIを知っている？相性を確認 →",
-    "testCounter": "これまで{{formattedCount}}人がテストしました",
+    "popularBadge": "💕 カップルに大人気！",
     "previewTitle": "こんな結果がもらえます",
     "previewSubtitle": "16タイプの相性をチェックしましょう",
     "previewCard1Title": "インスピレーションの源",
@@ -90,7 +90,12 @@
     "score2": "努力が必要",
     "score3": "良い相性",
     "score4": "素敵な相性",
-    "score5": "運命の相手"
+    "score5": "運命の相手",
+    "shareTitle": "友達にシェア",
+    "shareCta": "友達にシェアして相性を比較しましょう！ 💕",
+    "shareMessageTitle": "{{type1}} ❤️ {{type2}} 相性結果",
+    "shareMessageDesc": "私たちの相性をチェックしてね！",
+    "shareSubCta": "友達もテストすれば、お互いの相性を比較できます！"
   },
   "questions": {
     "q1": "パーティーや集まりに行くとエネルギーが充電される",

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { mbtiTypes } from '../data/mbtiTypes';
 import { getCompatibility, getAllCompatibilities } from '../data/compatibility';
 import { useSEO } from '../hooks/useSEO';
+import KakaoShareButton from '../components/KakaoShareButton';
 import styles from './CompatibilityPage.module.css';
 
 const MBTI_TYPES = [
@@ -182,6 +183,24 @@ export default function CompatibilityPage() {
                 </ul>
               </div>
             </div>
+
+            {/* 공유 섹션 */}
+            <motion.div
+              className={styles.shareSection}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <h3 className={styles.shareTitle}>💌 {t('compatibility.shareTitle')}</h3>
+              <p className={styles.shareCta}>{t('compatibility.shareCta')}</p>
+              <KakaoShareButton
+                title={t('compatibility.shareMessageTitle', { type1, type2 })}
+                description={t(`compatibilityData.${type1}.${type2}.title`) + '! ' + t('compatibility.shareMessageDesc')}
+                linkUrl={`${window.location.origin}/compatibility?type1=${type1}&type2=${type2}`}
+                showAllOptions={true}
+              />
+              <p className={styles.shareSubCta}>{t('compatibility.shareSubCta')}</p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

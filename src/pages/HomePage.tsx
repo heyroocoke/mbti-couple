@@ -1,68 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import { useSEO } from "../hooks/useSEO";
 import KakaoAdFit from "../components/KakaoAdFit";
 import styles from "./HomePage.module.css";
 
-// 테스트 카운터 관리
-const COUNTER_STORAGE_KEY = 'mbti_test_counter';
-const BASE_COUNT = 128547; // 기본 시작 숫자
-
-function getTestCount(): number {
-  if (typeof window === 'undefined') return BASE_COUNT;
-  const stored = localStorage.getItem(COUNTER_STORAGE_KEY);
-  if (stored) {
-    return parseInt(stored, 10);
-  }
-  // 초기값 설정
-  localStorage.setItem(COUNTER_STORAGE_KEY, BASE_COUNT.toString());
-  return BASE_COUNT;
-}
-
-export function incrementTestCount(): void {
-  if (typeof window === 'undefined') return;
-  const current = getTestCount();
-  localStorage.setItem(COUNTER_STORAGE_KEY, (current + 1).toString());
-}
-
-// 숫자 애니메이션 훅
-function useCountAnimation(targetCount: number, duration: number = 2000) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const startTime = Date.now();
-    const startCount = Math.max(0, targetCount - 1000);
-
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // easeOutQuart
-      const eased = 1 - Math.pow(1 - progress, 4);
-      const current = Math.floor(startCount + (targetCount - startCount) * eased);
-      setCount(current);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [targetCount, duration]);
-
-  return count;
-}
-
 export default function HomePage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [testCount, setTestCount] = useState(BASE_COUNT);
-  const animatedCount = useCountAnimation(testCount);
-
-  useEffect(() => {
-    setTestCount(getTestCount());
-  }, []);
 
   useSEO({
     title: t('home.seoTitle'),
@@ -123,9 +68,8 @@ export default function HomePage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <span className={styles.fireEmoji}>🔥</span>
           <span className={styles.counterText}>
-            {t('home.testCounter', { formattedCount: animatedCount.toLocaleString() })}
+            {t('home.popularBadge')}
           </span>
         </motion.div>
 

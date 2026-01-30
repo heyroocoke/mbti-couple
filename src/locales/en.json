@@ -32,7 +32,7 @@
     "feature3": "Love Tips",
     "startButton": "Start Test 💖",
     "compatibilityButton": "Know your MBTI? Check compatibility now →",
-    "testCounter": "{{formattedCount}} people have taken the test",
+    "popularBadge": "💕 Popular among couples!",
     "previewTitle": "Results you can get",
     "previewSubtitle": "Check compatibility of 16 personality types",
     "previewCard1Title": "Source of Inspiration",
@@ -90,7 +90,12 @@
     "score2": "Needs Effort",
     "score3": "Good Match",
     "score4": "Great Match",
-    "score5": "Perfect Match"
+    "score5": "Perfect Match",
+    "shareTitle": "Share with Friends",
+    "shareCta": "Share with friends and compare compatibility! 💕",
+    "shareMessageTitle": "{{type1}} ❤️ {{type2}} Compatibility",
+    "shareMessageDesc": "Check our compatibility!",
+    "shareSubCta": "If your friend takes the test, you can compare results!"
   },
   "questions": {
     "q1": "I feel energized when I go to parties or gatherings",
